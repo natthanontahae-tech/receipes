@@ -1,26 +1,33 @@
 class Recipe {
-  String imgLabel;
-  String imageUrl;
+  String imglabel;
+  String imgurl;
+  String detail;
 
+  Recipe(this.imgurl, this.imglabel, this.detail);
+  
+  static List<Recipe> samples =[
+    Recipe('assets/images/Crying tiger beef salad.webp',
+    'Crying tiger beef salad',
+    'this is a famous dish from Thailand is Northeastern (Isaan) region, known for its bold, spicy, and savory flavors. It is an exciting take on a classic grilled steak, often served as an appetizer or a main course with sticky rice.'
+    ),
+    
+    
+    Recipe('assets/images/Larb muang.webp',
+    'Larb muang', 
+    'this is a traditional Thai dish that features minced meat, typically pork or chicken, mixed with fresh herbs, lime juice, fish sauce, and toasted rice powder. It is known for its vibrant flavors and is often served with sticky rice and fresh vegetables.'
+    ),
+    
+    
+    Recipe('assets/images/Sweet Thai basil smash cocktail.webp', 
+    'Sweet Thai basil smash cocktail', 
+    'this is a refreshing cocktail made with Thai basil, lime, and a splash of sweetness.'
+    ),
+    
+    
+    Recipe('assets/images/Thai red curry paste.webp', 
+    'Thai red curry paste', 
+    'this is a flavorful and aromatic Thai red curry paste made from a blend of red chili peppers, garlic, lemongrass, and other spices.'
+    ),
+  ];
 
-  Recipe(this.imageUrl, this.imgLabel);
-
-  static List<Recipe> samples =
-    [
-      Recipe('assets/images/AIR-ZOOM-ALPHAFLY-NEXT_-3-EK.webp', 'Air Zoom Alphafly'),
-      Recipe('assets/images/AIR+JORDAN+1+RETRO+LOW+NS_5_11zon.webp', 'Air Jordan 1 Retro Low NS'),
-      Recipe('assets/images/JORDAN+HEIR+SERIES+PF_2_11zon.webp', 'Jordan Heir Series PF'),
-      Recipe('assets/images/JORDAN+LUKA+.77+PF_3_11zon.webp', 'Jordan Luka .77 PF'),
-      Recipe('assets/images/JORDAN+LUKA+4+PF_4_11zon.webp', 'Jordan Luka 4 PF'),
-      Recipe('assets/images/JORDAN+MVP+92_1_11zon.webp', 'Jordan MVP 92'),
-      Recipe('assets/images/NIKE-PEGASUS-PREMIUM.webp', 'Pegasus Premium'),
-      Recipe('assets/images/NIKE-VOMERO-PLUS.webp', 'Vomero Plus'),
-      Recipe('assets/images/NIKE+FIELD+GENERAL_6_11zon.webp', 'Field General'),
-      Recipe('assets/images/NIKE+FIELD+GENERAL+PRM_8_11zon.webp', 'Field General PRM'),
-      Recipe('assets/images/NIKE+SHOX+TL_10_11zon.webp', 'Shox TL'),
-      Recipe('assets/images/NIKE+TERRA+MANTA_9_11zon.webp', 'Terra Manta'),
-      Recipe('assets/images/TOTAL+90_7_11zon.webp', 'Total 90'),
-      Recipe('assets/images/TOTAL+90+PRM_11_11zon.webp', 'Total 90 PRM'),
-      Recipe('assets/images/ZOOM-FLY-6-EK_1.webp', 'Zoom Fly 6'),
-    ];
 }
