@@ -14,7 +14,7 @@ class RecipeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Recipe Calculator',
+      title: 'Food',
       theme: ThemeData(
         textTheme: GoogleFonts.bebasNeueTextTheme(),
         scaffoldBackgroundColor: const Color.fromARGB(255, 176, 169, 229),
@@ -23,7 +23,7 @@ class RecipeApp extends StatelessWidget {
           centerTitle: true,
         ),
       ),
-      home: const MyHomePage(title: 'Recipe Calculator'),
+      home: const MyHomePage(title: 'Food'),
     );
   }
 }
@@ -79,7 +79,7 @@ Widget buildRecipeCard(Recipe recipe) {
             recipe.imglabel,
             style: GoogleFonts.bebasNeue(fontSize: 24.0, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           Image(image: AssetImage(recipe.imgurl)),
         ],
       ),

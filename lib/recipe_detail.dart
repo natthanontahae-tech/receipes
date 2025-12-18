@@ -1,67 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:receipes/model/receipe.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class RecipeDetail extends StatelessWidget {
+class RecipeDetail extends StatefulWidget {
   final Recipe recipe;
-
   const RecipeDetail({super.key, required this.recipe});
-
+ 
+  @override
+  State<RecipeDetail> createState() {
+    return RecipeDetailState();
+  }
+}
+ 
+class RecipeDetailState extends State<RecipeDetail> {
+  int sliderValue = 1;
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recipe Detail'),
+        title: const Text('Food Detail'),
       ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 8.0),
-
-          Image(image: AssetImage(recipe.imgurl)),
-
-          const SizedBox(height: 16.0),
-
-          // -------------------------
-          //      CARD START
-          // -------------------------
-          Padding(
-            padding: const EdgeInsets.all(12.0),   // ขยับ card ให้ไม่ติดขอบจอ
-            child: Card(
-              elevation: 4,                        // เงาเล็ก ๆ ให้ดูนูน
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16), // ขอบโค้ง
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),      // padding ใน card
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Title
-                    Text(
-                      '${recipe.imglabel} Details',
-                      style: const TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 117, 70, 232),
-                      ),
-                    ),
-
-                    const SizedBox(height: 12),
-
-                    Text(
-                      recipe.detail,
-                      style: const TextStyle(
-                        fontSize: 14.0,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
-                ),
+          children: <Widget>[
+            Image(image: AssetImage(widget.recipe.imgurl)),
+            const SizedBox(height: 14.0),
+            Text(
+              widget.recipe.imglabel,
+              style: GoogleFonts.kanit(
+                fontSize: 40.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
-          ),
-        ],
+ 
+            Slider(
+              min: 1.0,
+              max: 15.0,
+              divisions: 15,
+              label: '$sliderValue servings',
+              value: sliderValue.toDouble(),
+              onChanged: (newValue) {
+                setState(() {
+                  sliderValue = newValue.toInt();
+                });
+              },
+            ),
+ 
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.recipe.ingredients.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final ingredient = widget.recipe.ingredients[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    child: Text(
+                      '${ingredient.quantity * sliderValue} ${ingredient.unit} ${ingredient.name}',
+                      style: const TextStyle(fontSize: 16.0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
